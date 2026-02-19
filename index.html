@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邓殷琪 - AI 简历助手</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 左侧：简历侧边栏 -->
+    <aside class="sidebar">
+        <div class="profile">
+            <h1>邓殷琪</h1>
+            <p class="tagline">生态伙伴总监 · B2B大客户开发专家</p>
+            <div class="contact-info">
+                <p>📍 深圳 / 广州</p>
+                <p>📧 13925049799@163.com</p>
+                <p>📱 13925049799</p>
+            </div>
+        </div>
+
+        <section>
+            <h2>个人简介</h2>
+            <p>多个知名KA的开发和转换案例，具有成熟的复杂B2B大客户落地方法论，能够在多角色协作环境中识别关键决策链并制定差异化推进策略。适应与学习能力突出，可在短周期内快速掌握业务环境并形成高效执行。</p>
+        </section>
+
+        <section>
+            <h2>工作经历</h2>
+
+            <div class="job">
+                <p><strong>深圳不停科技有限公司</strong></p>
+                <p class="job-meta">生态伙伴总监 · 2024.07 — 2025.11</p>
+                <ul>
+                    <li>主导KA客户0–1开发，项目中标率100%</li>
+                    <li>KA客户复购率超80%，回款准时率100%</li>
+                    <li>采购周期平均压缩约67%</li>
+                    <li>从0–1搭建全球经销商渠道体系</li>
+                </ul>
+            </div>
+
+
+            <div class="job">
+                <p><strong>易简生活（深圳）贸易有限公司</strong></p>
+                <p class="job-meta">创始人（个人创业）· 2019.12 — 2025.01</p>
+                <ul>
+                    <li>月均GMV 50w+，总体ROI达3+</li>
+                    <li>沉淀100+大型MCN/广告渠道及品牌资源</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <p><strong>与易简合作创业：创富港商业服务有限公司</strong></p>
+                <p class="job-meta">副总经理助理 · 2024.01 — 2024.06</p>
+                <ul>
+                    <li>孵化新媒体部门，3个月产出有效线索1000+</li>
+                    <li>贡献10%销售额，推动跨部门协同</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <p><strong>周生生（中国）商业有限公司</strong></p>
+                <p class="job-meta">商业分析管培生 · 2021.12 — 2022.12</p>
+                <ul>
+                    <li>考核评定A，覆盖亚太1000+直营门店</li>
+                    <li>承担业务与技术桥梁角色，输出需求文档</li>
+                </ul>
+            </div>
+
+        <section>
+            <h2>教育背景</h2>
+            <p><strong>深圳大学</strong></p>
+            <p class="job-meta">市场营销 · 全日制本科 · 2016–2020</p>
+            <br>
+            <p><strong>上海交通大学</strong></p>
+            <p class="job-meta">计算机科学与技术 · 自考 · 2024至今</p>
+        </section>
+
+        <section>
+            <h2>证书与技能</h2>
+            <ul>
+                <li>阿里云大模型 ACP 认证</li>
+                <li>阿里云云计算 ACA 认证</li>
+                <li>B2B大客户开发 / KA管理</li>
+                <li>渠道体系搭建 / 经销商管理</li>
+                <li>新媒体运营 / 内容投放</li>
+            </ul>
+        </section>
+    </aside>
+
+    <!-- 右侧：对话区域 -->
+    <main class="chat-area">
+        <div class="chat-header">
+            <h2>问我关于这份简历 👋</h2>
+            <p>你可以问：她有什么核心优势？她做过哪些行业？她的KA开发成果是什么？</p>
+        </div>
+
+        <div class="message-list" id="messageList">
+            <div class="message bot">
+                你好！我是邓殷琪的 AI 简历助手 🤖 你有什么想了解的？可以问我关于她的工作经历、核心成果或技能方向～
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input
+                type="text"
+                id="userInput"
+                placeholder="输入你的问题，例如：她的KA开发成果有哪些？"
+            />
+            <button onclick="sendMessage()">发送</button>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
