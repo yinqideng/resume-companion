@@ -69,7 +69,7 @@ async function sendMessage() {
   const botDiv = createBotBubble();
 
   try {
-    const response = await fetch("http://localhost:3000/api/chat", {
+    const response = await fetch("https://resume-companion-production.up.railway.app/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
