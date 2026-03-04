@@ -159,7 +159,7 @@ ${knowledgeContext}`
   }
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("🔥 DeepSeek 流式 + Memory(6轮) + RAG 已启动");
   console.log("✅ Server running on http://localhost:3000");
 });
