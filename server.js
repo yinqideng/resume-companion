@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile('/index.html');
 });
 
 
