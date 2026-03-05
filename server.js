@@ -8,6 +8,11 @@ dotenv.config();
 
 const app = express();
 
+app.get('/', (req, res) => {
+  res.send('Resume Companion is running!');
+});
+
+
 app.use(cors({
   origin: "*",
   methods: ["GET", "POST"],
