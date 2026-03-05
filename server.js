@@ -14,6 +14,10 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// ✅ 添加这一行
+app.use(express.static(__dirname));
+
+// 首页路由
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
