@@ -2,16 +2,21 @@ import express from "express";
 import axios from "axios";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
 import { knowledgeBase } from "./knowledge.js";
 
 dotenv.config();
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.sendFile('/index.html');
-});
+// 获取当前文件目录路径（ES Module 需要这样写）
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 app.use(cors({
   origin: "*",
@@ -20,6 +25,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
 
 // =============================
 // 🔍 知识检索 - 只返回相关片段，节省 token
