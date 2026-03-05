@@ -170,4 +170,9 @@ ${knowledgeContext}`
   }
 });
 
-export default app;
+// ✅ Render + 本地兼容的启动代码
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`✅ DEEPSEEK_API_KEY 已设置: ${!!process.env.DEEPSEEK_API_KEY}`);
+});
