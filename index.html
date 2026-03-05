@@ -1,160 +1,126 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>邓殷琪 - AI 简历助手</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <style>
-        /* 预设按钮 */
-        .preset-area {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-        .preset-btn {
-            background: #f0f0f0;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            padding: 6px 14px;
-            font-size: 13px;
-            cursor: pointer;
-            color: #333;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-        .preset-btn:hover {
-            background: #1e1e2e;
-            color: #fff;
-            border-color: #1e1e2e;
-        }
-        /* loading 动画 */
-        .loading-dots span {
-            animation: blink 1.2s infinite;
-            opacity: 0;
-        }
-        .loading-dots span:nth-child(1) { animation-delay: 0s; }
-        .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
-        .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes blink {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
-        }
-        /* markdown 渲染样式 */
-        .message p { margin-bottom: 8px; }
-        .message p:last-child { margin-bottom: 0; }
-        .message strong { font-weight: 600; }
-        .message ul, .message ol { padding-left: 18px; margin-bottom: 8px; }
-        .message li { margin-bottom: 4px; }
-    </style>
 </head>
 <body>
+    <!-- ✅ 新增：微信兼容性提示 -->
+    <div id="wechat-hint" style="display:none; background:#fffbf0; border:1px solid #ffd79b; padding:12px; border-radius:8px; margin:10px; font-size:14px; color:#666; text-align:center;">
+        💡 微信内访问受限，请点击右上角 <b>···</b> → <b>"在浏览器打开"</b> 获得完整体验
+    </div>
 
-    <!-- 左侧：简历侧边栏 -->
-    <aside class="sidebar">
-        <div class="profile">
+    <!-- 左侧简历信息 -->
+    <div class="resume-container">
+        <div class="resume-sidebar">
             <h1>邓殷琪</h1>
-            <p class="tagline">生态伙伴总监 · B2B大客户开发专家</p>
+            <p class="title">生态伙伴总监 · B2B大客户开发专家</p>
+            
             <div class="contact-info">
                 <p>📍 深圳 / 广州</p>
                 <p>📧 13925049799@163.com</p>
                 <p>📱 13925049799</p>
             </div>
+
+            <div class="section">
+                <h3>个人简介</h3>
+                <p>多个知名KA的开发和转换案例，具有成熟的复杂B2B大客户落地方法论，能够在多角色协作环境中识别关键决策链并制定差异化推进策略。适应与学习能力突出，可在短周期内快速掌握业务环境并形成高效执行。</p>
+            </div>
+
+            <div class="section">
+                <h3>工作经历</h3>
+                
+                <div class="job">
+                    <h4>深圳不停科技有限公司</h4>
+                    <p class="job-meta">生态伙伴总监 · 2024.07 — 2025.11</p>
+                    <ul>
+                        <li>主导KA客户0–1开发，项目中标率100%</li>
+                        <li>KA客户复购率超80%，回款准时率100%</li>
+                        <li>采购周期平均压缩约67%</li>
+                        <li>从0–1搭建全球经销商渠道体系</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <h4>易简生活（深圳）贸易有限公司</h4>
+                    <p class="job-meta">创始人（个人创业）· 2019.12 — 2025.01</p>
+                    <ul>
+                        <li>月均GMV 50w+，总体ROI达3+</li>
+                        <li>沉淀100+大型MCN/广告渠道及品牌资源</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <h4>周生生（中国）商业有限公司</h4>
+                    <p class="job-meta">商业分析管培生 · 2021.12 — 2022.12</p>
+                    <ul>
+                        <li>考核评定A，覆盖亚太1000+直营门店</li>
+                        <li>承担业务与技术桥梁角色，输出需求文档</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>教育背景</h3>
+                
+                <div class="education">
+                    <h4>深圳大学</h4>
+                    <p>市场营销 · 全日制本科 · 2016–2020</p>
+                </div>
+
+                <div class="education">
+                    <h4>上海交通大学</h4>
+                    <p>计算机科学与技术 · 自考 · 2024至今</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>证书与技能</h3>
+                <ul>
+                    <li>阿里云大模型 ACP 认证</li>
+                    <li>阿里云云计算 ACA 认证</li>
+                    <li>B2B大客户开发 / KA管理</li>
+                    <li>渠道体系搭建 / 经销商管理</li>
+                    <li>新媒体运营 / 内容投放</li>
+                </ul>
+            </div>
         </div>
 
-        <section>
-            <h2>个人简介</h2>
-            <p>多个知名KA的开发和转换案例，具有成熟的复杂B2B大客户落地方法论，能够在多角色协作环境中识别关键决策链并制定差异化推进策略。适应与学习能力突出，可在短周期内快速掌握业务环境并形成高效执行。</p>
-        </section>
-
-        <section>
-            <h2>工作经历</h2>
-
-            <div class="job">
-                <p><strong>深圳不停科技有限公司</strong></p>
-                <p class="job-meta">生态伙伴总监 · 2024.07 — 2025.11</p>
-                <ul>
-                    <li>主导KA客户0–1开发，项目中标率100%</li>
-                    <li>KA客户复购率超80%，回款准时率100%</li>
-                    <li>采购周期平均压缩约67%</li>
-                    <li>从0–1搭建全球经销商渠道体系</li>
-                </ul>
-            </div>
-
-         
-            <div class="job">
-                <p><strong>易简生活（深圳）贸易有限公司</strong></p>
-                <p class="job-meta">创始人（个人创业）· 2019.12 — 2025.01</p>
-                <ul>
-                    <li>月均GMV 50w+，总体ROI达3+</li>
-                    <li>沉淀100+大型MCN/广告渠道及品牌资源</li>
-                </ul>
-            </div>
-
-            <div class="job">
-                <p><strong>周生生（中国）商业有限公司</strong></p>
-                <p class="job-meta">商业分析管培生 · 2021.12 — 2022.12</p>
-                <ul>
-                    <li>考核评定A，覆盖亚太1000+直营门店</li>
-                    <li>承担业务与技术桥梁角色，输出需求文档</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>教育背景</h2>
-            <p><strong>深圳大学</strong></p>
-            <p class="job-meta">市场营销 · 全日制本科 · 2016–2020</p>
-            <br>
-            <p><strong>上海交通大学</strong></p>
-            <p class="job-meta">计算机科学与技术 · 自考 · 2024至今</p>
-        </section>
-
-        <section>
-            <h2>证书与技能</h2>
-            <ul>
-                <li>阿里云大模型 ACP 认证</li>
-                <li>阿里云云计算 ACA 认证</li>
-                <li>B2B大客户开发 / KA管理</li>
-                <li>渠道体系搭建 / 经销商管理</li>
-                <li>新媒体运营 / 内容投放</li>
-            </ul>
-        </section>
-    </aside>
-
-    <!-- 右侧：对话区域 -->
-    <main class="chat-area">
-        <div class="chat-header">
+        <!-- 右侧AI聊天界面 -->
+        <div class="chat-container">
             <h2>问我关于这份简历 👋</h2>
-            <p>点击快速提问，或直接输入你想了解的内容</p>
-        </div>
+            <p class="subtitle">点击快速提问，或直接输入你想了解的内容</p>
+            
+            <div class="quick-questions">
+                <button class="quick-btn" onclick="askQuestion('简要介绍一下自己')">简要介绍一下自己</button>
+                <button class="quick-btn" onclick="askQuestion('关于我的 Fun Facts')">关于我的 Fun Facts</button>
+                <button class="quick-btn" onclick="askQuestion('过去最难搞的3个客户')">过去最难搞的3个客户</button>
+                <button class="quick-btn" onclick="askQuestion('我的能力和优势')">我的能力和优势</button>
+            </div>
 
-        <!-- 预设快捷按钮 -->
-        <div class="preset-area">
-            <button class="preset-btn" onclick="askPreset('intro')">简要介绍一下自己</button>
-            <button class="preset-btn" onclick="askPreset('funfacts')">关于我的 Fun Facts</button>
-            <button class="preset-btn" onclick="askPreset('hardclients')">过去最难搞的3个客户</button>
-            <button class="preset-btn" onclick="askPreset('strengths')">我的能力和优势</button>
-        </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    你好！我是邓殷琪的 AI 简历助手 🤖 你有什么想了解的？可以点击上方快捷问题，或直接输入～
+                </div>
+            </div>
 
-        <div class="message-list" id="messageList">
-            <div class="message bot">
-                你好！我是邓殷琪的 AI 简历助手 🤖 你有什么想了解的？可以点击上方快捷问题，或直接输入～
+            <div class="chat-input-container">
+                <input type="text" id="userInput" class="chat-input" placeholder="输入你的问题..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()" class="send-btn">发送</button>
             </div>
         </div>
+    </div>
 
-        <div class="input-area">
-            <input
-                type="text"
-                id="userInput"
-                placeholder="输入你的问题，例如：她的KA开发成果有哪些？"
-            />
-            <button onclick="sendMessage()">发送</button>
-        </div>
-    </main>
-
-    <script src="app.js"></script>
+    <script src="app.js" type="module"></script>
+    
+    <!-- ✅ 新增：检测微信浏览器的脚本 -->
+    <script>
+        // 检测是否在微信浏览器中打开
+        if (/MicroMessenger/i.test(navigator.userAgent)) {
+            document.getElementById('wechat-hint').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
