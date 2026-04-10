@@ -14,13 +14,8 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ✅ 添加这一行
-app.use(express.static(__dirname));
-
-// 首页路由
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+// 提供 dist/ 中的静态文件
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(cors({
   origin: "*",
@@ -172,6 +167,11 @@ ${knowledgeContext}`
       res.status(500).json({ error: error.response?.data || error.message });
     }
   }
+});
+
+// SPA 兼容性：捕获所有非 API 路由，返回 React 应用
+app.use((_, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 // ✅ Render + 本地兼容的启动代码

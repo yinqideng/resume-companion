@@ -1,0 +1,330 @@
+/* ============================================
+   设计 Token（nia99.online 风格）
+   ============================================ */
+
+:root {
+  /* 背景与表面 */
+  --bg: #050505;
+  --bg-light: #0a0a0a;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.12);
+
+  /* 颜色 */
+  --pink: #E8639A;
+  --pink-dark: #d94a80;
+  --pink-glow: rgba(232, 99, 154, 0.3);
+  --pink-light: rgba(232, 99, 154, 0.1);
+
+  /* 文字 */
+  --text: #FFFFFF;
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-dimmed: rgba(255, 255, 255, 0.3);
+
+  /* 字体 */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* 间距（8px 网格） */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  --spacing-4xl: 80px;
+
+  /* 圆角 */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* 阴影 */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.7);
+
+  /* Z-index */
+  --z-nav: 100;
+  --z-modal: 200;
+}
+
+/* ============================================
+   全局重置
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 隐藏滚动条但保留滚动功能 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* ============================================
+   排版
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 96px;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 56px;
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-size: 36px;
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+a {
+  color: var(--pink);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--pink-dark);
+}
+
+/* ============================================
+   组件：按钮
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--pink);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--pink-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232, 99, 154, 0.3);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-hover);
+  border-color: var(--pink);
+}
+
+/* ============================================
+   组件：玻璃卡片
+   ============================================ */
+
+.glass-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: var(--spacing-2xl);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--pink);
+  box-shadow: 0 0 32px var(--pink-glow);
+}
+
+/* ============================================
+   动画
+   ============================================ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(232, 99, 154, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(232, 99, 154, 0.6);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-in-up-delay-1 { animation-delay: 0.1s; }
+.fade-in-up-delay-2 { animation-delay: 0.2s; }
+.fade-in-up-delay-3 { animation-delay: 0.3s; }
+
+/* ============================================
+   Hero + Chat 布局
+   ============================================ */
+
+.hero-chat-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  margin-top: 64px;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: var(--bg);
+}
+
+.hero-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-section {
+  flex: 0 0 300px;
+  height: 480px;
+  position: sticky;
+  top: 64px;
+  overflow: hidden;
+}
+
+/* ============================================
+   响应式
+   ============================================ */
+
+@media (max-width: 1024px) {
+  h1 { font-size: 72px; }
+  h2 { font-size: 48px; }
+  h3 { font-size: 32px; }
+
+  .chat-section {
+    flex: 0 0 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 48px; }
+  h2 { font-size: 36px; }
+  h3 { font-size: 24px; }
+  p { font-size: 14px; }
+
+  .hero-chat-container {
+    flex-direction: column;
+    min-height: auto;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    margin-top: 64px;
+  }
+
+  .hero-section {
+    min-height: 60vh;
+  }
+
+  .chat-section {
+    flex: 1;
+    height: 50vh;
+    position: relative;
+    top: auto;
+  }
+}
